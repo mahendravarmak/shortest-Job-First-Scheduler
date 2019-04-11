@@ -37,7 +37,7 @@ int main()
 	}
 	p[i].ct=k;
     }
-    printf("\n");
+    printf("Output is \n");
     
     for(int i=0;i<n;i++)
     {
