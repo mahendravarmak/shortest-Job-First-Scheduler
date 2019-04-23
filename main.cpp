@@ -1,8 +1,12 @@
+
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
+#include <bits/stdc++.h>
 
-struct process
+using namespace std;
+
+struct proc
 {
 	char processid[10][10];
 	int bursttime;
@@ -12,32 +16,53 @@ struct process
 	int ct=0;
 };
 
+bool compareTwoStudents(proc a, proc b) 
+{ 
+    // If total marks are not same then 
+    // returns true for higher total 
+  //  if (a.bursttime != b.bursttime ) 
+        return a.bursttime < b.bursttime; 
+  
+    // If marks in Maths are not same then 
+    // returns true for higher marks 
+//    if (a.math != b.math) 
+//            return a.math > b.math; 
+//  
+//    return (a.phy > b.phy); 
+}
+
+
 int main()
 {
 	int n;
 	float avgtat=0,avgwt=0;
-	printf("How many process do you want \n");
+	printf("enter how many process u want to enter\n");
 	scanf("%d",&n);
-	process p[n];
+	proc p[n];
 	for(int i=0;i<n;i++)
 	{
-		printf("Enter %d Process id\n",i+1);
+		printf("enter %d pocess id\n",i+1);
 		scanf("%s",&p[i].processid[i]);
-		printf("Enter Arrival time\n");
+		printf("enter arrival time\n");
 		scanf("%d",&p[i].arrivaltime);
 	}
-	
-	
 	
 	for(int i=0;i<n;i++)
 	{
 		p[i].bursttime=p[i].arrivaltime*2;
 	}
-	
+
+    
+    sort(p,p+n,compareTwoStudents);
+    	
 	int k=1;
 	for(int i=0;i<n;i++)
 	{	
 	int temp=p[i].bursttime;
+	if(temp==0)
+	{
+		k--;
+	}
 	while(temp!=0)
 	{
 		k++;
@@ -71,14 +96,14 @@ int main()
 	printf("\n");
 	printf("\n");
 	
-   printf("Arrival time is:\t");
+   printf("arrival time is:\t");
     for(int i=0;i<n;i++)
     {
     	printf("%d\t",p[i].arrivaltime);
 	} 
     printf("\n");
     
-    printf("Burst time is:\t\t");
+    printf("burst time is:\t\t");
     for(int i=0;i<n;i++)
     {
     printf("%d\t",p[i].bursttime);
@@ -86,7 +111,7 @@ int main()
     printf("\n");
 
 
-	printf("Completion time is:\t");
+	printf("completion time is:\t");
     for(int i=0;i<n;i++)
     {
     printf("%d\t",p[i].ct);
@@ -94,14 +119,14 @@ int main()
     printf("\n");
    
    
-   printf("Turn Around time is:\t");
+   printf("turn around time is:\t");
     for(int i=0;i<n;i++)
     {
     printf("%d\t",p[i].tat);
     }
     printf("\n");
     
-    printf("Waiting time\t\t");
+    printf("waiting time\t\t");
     for(int i=0;i<n;i++)
     {
     printf("%d\t",p[i].wt);
@@ -117,6 +142,7 @@ int main()
     avgtat=avgtat/n;
     avgwt=avgwt/n;
 	printf("\n");
-	printf("Average Turnaroundtime time is:%.3f \n",avgtat);
-	printf("Average Waiting time is: %.3f \n",avgwt);
+	printf("average turnaroundtime time is:%.2f \n",avgtat);
+	printf("average waiting time is: %.2f \n",avgwt);
 }
+
