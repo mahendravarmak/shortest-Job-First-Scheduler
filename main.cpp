@@ -2,7 +2,7 @@
 #include<string.h>
 #include<stdlib.h>
 
-struct proc
+struct process
 {
 	char processid[10][10];
 	int bursttime;
@@ -16,14 +16,14 @@ int main()
 {
 	int n;
 	float avgtat=0,avgwt=0;
-	printf("enter how many process u want to enter\n");
+	printf("How many process do you want \n");
 	scanf("%d",&n);
-	proc p[n];
+	process p[n];
 	for(int i=0;i<n;i++)
 	{
-		printf("enter %d pocess id\n",i+1);
+		printf("Enter %d Process id\n",i+1);
 		scanf("%s",&p[i].processid[i]);
-		printf("enter arrival time\n");
+		printf("Enter Arrival time\n");
 		scanf("%d",&p[i].arrivaltime);
 	}
 	
@@ -71,14 +71,14 @@ int main()
 	printf("\n");
 	printf("\n");
 	
-   printf("arrival time is:\t");
+   printf("Arrival time is:\t");
     for(int i=0;i<n;i++)
     {
     	printf("%d\t",p[i].arrivaltime);
 	} 
     printf("\n");
     
-    printf("burst time is:\t\t");
+    printf("Burst time is:\t\t");
     for(int i=0;i<n;i++)
     {
     printf("%d\t",p[i].bursttime);
@@ -86,7 +86,7 @@ int main()
     printf("\n");
 
 
-	printf("completion time is:\t");
+	printf("Completion time is:\t");
     for(int i=0;i<n;i++)
     {
     printf("%d\t",p[i].ct);
@@ -94,14 +94,14 @@ int main()
     printf("\n");
    
    
-   printf("turn around time is:\t");
+   printf("Turn Around time is:\t");
     for(int i=0;i<n;i++)
     {
     printf("%d\t",p[i].tat);
     }
     printf("\n");
     
-    printf("waiting time\t\t");
+    printf("Waiting time\t\t");
     for(int i=0;i<n;i++)
     {
     printf("%d\t",p[i].wt);
@@ -117,6 +117,6 @@ int main()
     avgtat=avgtat/n;
     avgwt=avgwt/n;
 	printf("\n");
-	printf("average turnaroundtime time is:%.2f \n",avgtat);
-	printf("average waiting time is: %.2f \n",avgwt);
+	printf("Average Turnaroundtime time is:%.3f \n",avgtat);
+	printf("Average Waiting time is: %.3f \n",avgwt);
 }
